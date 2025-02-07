@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Lanches - Histórico de Vendas</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #c93c7c;">
+
+    <nav class="navbar navbar-expand-lg navbar-light rosa">
+        <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="index.html">Safira Lanches</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            Menu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historico.html">Historico de vendas</a></li>
+                            <li><a class="dropdown-item" href="vendas.html">Vendas</a></li>
+                            <li><a class="dropdown-item" href="cadastro.html">Cadastro de produtos</a></li>
+
+                            
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Contato</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-warning">Histórico de Vendas</h2>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Valor Total</th>
+                    <th>Troco</th>
+                    <th>Hora da Venda</th>
+                    <th>Lucro</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaVendas">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const vendas = [
+            {
+                produto: "Pastel de Carne",
+                quantidade: 2,
+                formaPagamento: "Dinheiro",
+                valorTotal: 10.00,
+                troco: 0.00,
+                horaVenda: "14:30",
+                lucro: 5.00
+            },
+            {
+                produto: "Coxinha",
+                quantidade: 1,
+                formaPagamento: "Cartão",
+                valorTotal: 5.00,
+                troco: 0.00,
+                horaVenda: "15:00",
+                lucro: 3.00
+            }
+        ];
+
+        function carregarHistoricoVendas() {
+            const tabelaVendas = document.getElementById("tabelaVendas");
+            tabelaVendas.innerHTML = ''; 
+
+            vendas.forEach(venda => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${venda.produto}</td>
+                    <td>${venda.quantidade}</td>
+                    <td>${venda.formaPagamento}</td>
+                    <td>R$ ${venda.valorTotal.toFixed(2)}</td>
+                    <td>R$ ${venda.troco.toFixed(2)}</td>
+                    <td>${venda.horaVenda}</td>
+                    <td>R$ ${venda.lucro.toFixed(2)}</td>
+                `;
+                tabelaVendas.appendChild(tr);
+            });
+        }
+
+        window.onload = carregarHistoricoVendas;
+    </script>
+
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>

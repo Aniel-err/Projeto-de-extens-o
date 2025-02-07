@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Lanches</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #c93c7c;">
+
+    <nav class="navbar navbar-expand-lg navbar-light rosa">
+        <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="index.html">Safira Lanches</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            Menu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historico.html">Historico de vendas</a></li>
+                            <li><a class="dropdown-item" href="vendas.html">Vendas</a></li>
+                            <li><a class="dropdown-item" href="cadastro.html">Cadastro de produtos</a></li>
+
+                            
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Contato</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Pesquisa" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-warning">Venda de Produtos</h2>
+        <ul class="nav nav-tabs" id="vendaTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#salgados">Salgados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#sucos">Sucos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#refrigerantes">Refrigerantes</a>
+            </li>
+        </ul>
+        <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="salgados">
+                <form id="vendaForm">
+                    <div class="mb-3">
+                        <label for="produto" class="form-label">Produto</label>
+                        <input type="text" class="form-control" id="produto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantidade" class="form-label">Quantidade</label>
+                        <input type="number" class="form-control" id="quantidade" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
+                        <select class="form-control" id="formaPagamento" required>
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="cartao">Cartão</option>
+                            <option value="pix">Pix</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="valorRecebido" class="form-label">Valor Recebido</label>
+                        <input type="number" class="form-control" id="valorRecebido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="troco" class="form-label">Troco</label>
+                        <input type="text" class="form-control" id="troco" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Finalizar Venda</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+
+        document.getElementById("vendaForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const produto = document.getElementById("produto").value;
+            const quantidade = document.getElementById("quantidade").value;
+            const formaPagamento = document.getElementById("formaPagamento").value;
+            const valorRecebido = parseFloat(document.getElementById("valorRecebido").value);
+            const precoProduto = 5; 
+            const total = precoProduto * quantidade;
+            const troco = valorRecebido - total;
+
+            document.getElementById("troco").value = troco >= 0 ? troco.toFixed(2) : "Valor insuficiente";
+
+            if (troco >= 0) {
+                alert(`Venda realizada!\nProduto: ${produto}\nQuantidade: ${quantidade}\nForma de Pagamento: ${formaPagamento}\nTotal: R$${total.toFixed(2)}\nTroco: R$${troco.toFixed(2)}\nHorário: ${new Date().toLocaleTimeString()}`);
+            }
+        });
+    </script>
+
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>
