@@ -6,8 +6,30 @@
     <title>Safira Lanches</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #c93c7c; /* Fundo mais suave */
+        }
+        .container {
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h2 {
+            color: #007bff; /* Azul para o título */
+        }
+        .btn-success {
+            background-color: #28a745; /* Verde mais forte */
+            border-color: #28a745;
+        }
+        .form-label {
+            color: #495057; /* Cor de texto para rótulos */
+        }
+    </style>
 </head>
-<body style="background-color: #c93c7c;">
+<body>
 
 
     <nav class="navbar navbar-expand-lg navbar-light rosa">
@@ -46,7 +68,7 @@
     </nav>
 
     <div class="container mt-5">
-        <h2 class="text-center text-warning">Cadastro de Produtos</h2>
+        <h2 class="text-center">Cadastro de Produtos</h2>
         <form id="produtoForm">
             <div class="mb-3">
                 <label for="nomeProduto" class="form-label">Nome do Produto</label>
@@ -62,7 +84,19 @@
             </div>
             <div class="mb-3">
                 <label for="imagemProduto" class="form-label">Imagem</label>
-                <input type="text" class="form-control" id="imagemProduto" required>
+                <input type="file" class="form-control" id="imagemProduto" accept="image/*" required>
+                <div class="form-text">Escolha uma imagem para o produto (JPG, PNG, etc.).</div>
+            </div>
+            <div class="mb-3">
+                <label for="categoriaProduto" class="form-label">Categoria</label>
+                <select class="form-select" id="categoriaProduto" required>
+                    <option value="">Selecione a Categoria</option>
+                    <option value="salgado">Salgado</option>
+                    <option value="refri">Refrigerante</option>
+                    <option value="doce">Doce</option>
+                    <option value="bebida">Bebida</option>
+                    <option value="outros">Outros</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-success w-100">Cadastrar Produto</button>
         </form>

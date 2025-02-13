@@ -6,6 +6,41 @@
     <title>Safira Lanches - Histórico de Vendas</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+         .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        h2 {
+            color: #007bff; /* Cor do título azul */
+            margin-bottom: 20px;
+        }
+        .table {
+            border-radius: 8px;
+            overflow: hidden; /* Garante que as bordas arredondadas apareçam corretamente */
+        }
+        .table thead {
+            background-color: #007bff;
+            color: white;
+        }
+        .table th, .table td {
+            text-align: center;
+            padding: 15px;
+        }
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body style="background-color: #c93c7c;">
 
@@ -45,7 +80,7 @@
     </nav>
 
     <div class="container mt-5">
-        <h2 class="text-center text-warning">Histórico de Vendas</h2>
+        <h2 class="text-center">Histórico de Vendas</h2>
 
         <table class="table table-bordered table-striped">
             <thead>
@@ -60,10 +95,10 @@
                 </tr>
             </thead>
             <tbody id="tabelaVendas">
+                <!-- As vendas serão inseridas aqui -->
             </tbody>
         </table>
     </div>
-
     <script>
         const vendas = [
             {
